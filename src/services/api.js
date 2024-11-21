@@ -1,6 +1,9 @@
 import axios from "axios";
 
-axios.defaults.baseURL = 'http://127.0.0.1:8000/tempfileupload';
-// axios.defaults.baseURL = 'https://backend-apis-five.vercel.app/tempfileupload';
+const BACKEND_URL = process.env.BACKEND_URL;
+const api = axios.create({
+  baseURL: `${BACKEND_URL}`,
+  timeout: 120000,
+});
 
-export default axios
+export default api;
