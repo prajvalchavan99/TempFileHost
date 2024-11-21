@@ -70,7 +70,7 @@ const FileDisplayPage = () => {
   };
 
   const navigateToHome = () => {
-    navigate(`/`);
+    navigate(`/TempFileHost/`);
   };
 
   return (

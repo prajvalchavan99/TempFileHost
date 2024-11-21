@@ -10,8 +10,8 @@ root.render(
   <React.StrictMode>
     <BrowserRouter>
       <Routes>
-        <Route path='/' exact Component={FileUpload} />
-        <Route path='/:endpoint' element={<FileDisplayPage />} />
+        <Route path='/TempFileHost/' exact Component={FileUpload} />
+        <Route path='/TempFileHost/:endpoint' element={<FileDisplayPage />} />
       </Routes>
     </BrowserRouter>
   </React.StrictMode>

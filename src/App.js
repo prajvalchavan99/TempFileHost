@@ -6,8 +6,8 @@ import FileDisplayPage from './components/upload/FileDisplayPage';
 function App() {
   return (
     <Router>
-        <Route path='/' exact Component={FileUpload}/>
-        <Route path='/:endpoint' element={<FileDisplayPage/>}/>
+        <Route path='TempFileHost/' exact Component={FileUpload}/>
+        <Route path='TempFileHost/:endpoint' element={<FileDisplayPage/>}/>
     </Router>
   );
 }
