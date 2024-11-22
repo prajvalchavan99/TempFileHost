@@ -25,7 +25,7 @@ export default function FileUpload() {
       .post("/upload/", formdata)
       .then((response) => {
         console.log("File uploaded", response.data);
-        navigate(`/TempFileHost/${endpoint}`);
+        navigate(`/file?filename=${endpoint}`);
         setIsLoading(false);
       })
       .catch((error) => {

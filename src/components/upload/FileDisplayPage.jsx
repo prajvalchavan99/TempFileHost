@@ -71,7 +71,7 @@ const FileDisplayPage = () => {
   };
 
   const navigateToHome = () => {
-    navigate(`/TempFileHost/`);
+    navigate(`/`);
   };
 
   return (

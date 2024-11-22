@@ -3,8 +3,8 @@ import mainLogo from "../../assets/images/tempupload-logo.png";
 const Header = () => {
   return (
     <div className="navigation-bar">
-      <img src={mainLogo} alt="Logo" height={"90px"} width={"90px"} />
-      <h1>Temp File Host</h1>
+      <img src={mainLogo} alt="Logo" height={"70px"} width={"70px"} />
+      <h2>Temp File Host</h2>
     </div>
   );
 };

@@ -31,7 +31,7 @@ body {
 
 .landing-container p {
   margin-bottom: 0;
-  font-size: 20px;
+  font-size: 17px;
   text-align: left;
   overflow-wrap: break-word;
 }
@@ -57,11 +57,11 @@ body {
 .file-preview {
   text-align: left;
   color: white;
-  font-size: 20px;
+  font-size: 17px;
 }
 
 .file-preview p {
-  font-size: 19px;
+  font-size: 17px;
   margin-bottom: 15px;
   overflow-wrap: break-word;
 }
@@ -152,4 +152,6 @@ body.loading {
   padding: 10px;
   border-radius: 5px;
   margin: 10px;
+  height: 215px;
+  width: 215px;
 }
