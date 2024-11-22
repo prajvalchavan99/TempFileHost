@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import { useParams } from "react-router-dom";
+import { useSearchParams } from "react-router-dom";
 import api from "../../services/api";
 import { useNavigate } from "react-router-dom";
 import Header from "../common/Header";
@@ -7,7 +7,8 @@ import QRCode from "react-qr-code";
 import Footer from "../common/Footer";
 
 const FileDisplayPage = () => {
-  const { endpoint } = useParams();
+  const [searchParams] = useSearchParams();
+  const endpoint = searchParams.get("filename");
   const navigate = useNavigate();
   const [filename, setFilename] = useState("");
   const [validity, setValidity] = useState(null);
