@@ -12,6 +12,9 @@ const FileDisplayPage = () => {
   const navigate = useNavigate();
   const [filename, setFilename] = useState("");
   const [validity, setValidity] = useState(null);
+  const [expiry, setExpiry] = useState("");
+  const [downloadedSize, setDownloadedSize] = useState(0);
+  const [originalDownloadSize, setOriginalDownloadSize] = useState(0);
   const [error, setError] = useState(null);
   const [isLoading, setIsLoading] = useState(false);
   const [copyTextMsg, setCopyTextMsg] = useState("");
@@ -21,6 +24,8 @@ const FileDisplayPage = () => {
         const response = await api.get(`upload/${endpoint}`);
         setFilename(response.data.file_name);
         setValidity(response.data.validity);
+        var localDate = new Date(response.data.expiration_time)
+        setExpiry(localDate.toLocaleString());
       } catch (error) {
         console.error("Error fetching file metadata:", error);
         setError("File not found or has expired");
@@ -33,15 +38,22 @@ const FileDisplayPage = () => {
   const downloadFile = async () => {
     setIsLoading(true);
     try {
-      const response = await api.get(
-        `download-uploaded-file/${endpoint}`,
-        { responseType: "blob" },
-        {
-          headers: {
-            "Content-Type": "application/json",
-          },
-        }
-      );
+      const response = await api.get(`download-uploaded-file/${endpoint}`, {
+        responseType: "blob",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        onDownloadProgress: (progressEvent) => {
+          const { loaded, total } = progressEvent;
+  
+          if (total) {
+            setDownloadedSize((loaded / (1024*1024)).toFixed(2));
+            setOriginalDownloadSize((total / (1024*1024)).toFixed(2));
+          } else {
+            isLoading(false);
+          }
+        },
+      });
 
       if (response.status === 200) {
         const blob = response.data; // Blob data is already available
@@ -97,6 +109,9 @@ const FileDisplayPage = () => {
               <p className="detail-text">
                 Validity time: <b>{validity} minutes</b>
               </p>
+              <p className="detail-text">
+                Expiry: <b>{expiry}</b>
+              </p>
               <QRCode value={window.location.href} className="QRCode-box" />
               <br />
               <input
@@ -113,7 +128,7 @@ const FileDisplayPage = () => {
               <button
                 className="upload-btn"
                 style={{
-                  width: "197px",
+                  width: "220px",
                   pointerEvents: isLoading ? "none" : "auto",
                 }}
                 onClick={downloadFile}
@@ -121,7 +136,7 @@ const FileDisplayPage = () => {
                 {!isLoading ? (
                   "Download File"
                 ) : (
-                  <span class="button-loader"></span>
+                  <span>Downloading... ({downloadedSize} Mb/{originalDownloadSize} Mb)</span>
                 )}
               </button>
             </>
