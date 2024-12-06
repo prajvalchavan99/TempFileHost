@@ -1,14 +1,14 @@
 {
   "files": {
     "main.css": "/TempFileHost/static/css/main.a4a21b26.css",
-    "main.js": "/TempFileHost/static/js/main.86344587.js",
+    "main.js": "/TempFileHost/static/js/main.8fc0324a.js",
     "static/media/tempupload-logo.png": "/TempFileHost/static/media/tempupload-logo.b81ff61b9f64fe7b984b.png",
     "index.html": "/TempFileHost/index.html",
     "main.a4a21b26.css.map": "/TempFileHost/static/css/main.a4a21b26.css.map",
-    "main.86344587.js.map": "/TempFileHost/static/js/main.86344587.js.map"
+    "main.8fc0324a.js.map": "/TempFileHost/static/js/main.8fc0324a.js.map"
   },
   "entrypoints": [
     "static/css/main.a4a21b26.css",
-    "static/js/main.86344587.js"
+    "static/js/main.8fc0324a.js"
   ]
 }
