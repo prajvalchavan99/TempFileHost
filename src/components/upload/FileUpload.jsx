@@ -11,6 +11,7 @@ export default function FileUpload() {
   const [endpoint, setEndpoint] = useState();
   const [error, seterror] = useState("");
   const [isLoading, setIsLoading] = useState(false);
+  const [urlCode, setUrlCode] = useState("");
   const handleFileChange = (event) => {
     setFile(event.target.files[0]);
   };
@@ -105,7 +106,7 @@ export default function FileUpload() {
                 />
               </label>
               <label>
-                Url:
+                Url code:
                 <input
                   type="text"
                   value={endpoint}
@@ -144,6 +145,47 @@ export default function FileUpload() {
               </label>
               <p>Upload file less than 50mb.</p>
               {error ? <p className="error-msg">{error}</p> : ""}
+              <br />
+              <div
+                style={{
+                  display: "flex",
+                  alignItems: "center",
+                  textAlign: "center",
+                }}
+              >
+                <hr
+                  style={{
+                    flex: 1,
+                    border: "none",
+                    borderTop: "1px solid #ccc",
+                  }}
+                />
+                <p style={{ margin: "0 10px", whiteSpace: "nowrap" }}>OR</p>
+                <hr
+                  style={{
+                    flex: 1,
+                    border: "none",
+                    borderTop: "1px solid #ccc",
+                  }}
+                />
+              </div>
+              <br />
+              <label style={{ textAlign: "left" }}>
+                Find your uploaded file:
+                <input
+                  type="text"
+                  maxLength={20}
+                  onChange={(e) => setUrlCode(e.target.value)}
+                  value={urlCode}
+                  placeholder="Enter url code"
+                />
+              </label>
+              <button
+                className="upload-btn"
+                onClick={() => navigate(`/file?filename=${urlCode}`)}
+              >
+                Submit
+              </button>
             </div>
           )}
         </div>

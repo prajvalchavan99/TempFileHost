@@ -107,6 +107,9 @@ const FileDisplayPage = () => {
                 File name: <b>{filename}</b>
               </p>
               <p className="detail-text">
+                Url code: <b>{endpoint}</b>
+              </p>
+              <p className="detail-text">
                 Validity time: <b>{validity} minutes</b>
               </p>
               <p className="detail-text">
